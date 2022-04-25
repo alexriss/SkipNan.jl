@@ -1,6 +1,6 @@
 name = "SkipNan"
 uuid = "aed68c70-c8b0-4309-8cd1-d392a74f991a"
-authors = ["Alex Riss <00alexx@riss.at> and contributors"]
+authors = ["Alex Riss"]
 version = "0.1.0"
 
 [compat]
