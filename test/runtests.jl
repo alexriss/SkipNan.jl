@@ -46,6 +46,8 @@ using Test
 
     @test sprint(Base.show, x) == "skipnan([1.0, NaN, 2.0])"
     @test [i for i in x] ≈ [1., 2.]
+    typeof(eachindex(x)) <: Base.Iterators.Filter
+    @test collect(eachindex(x)) ≈ [1, 3]
     @test eltype(x) == Float64
     @test eltype(x32) == Float32
     @test Base.IteratorSize(x) == Base.SizeUnknown()
