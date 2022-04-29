@@ -34,4 +34,20 @@ using Test
     @test isa(err, MissingException)
     @test contains(sprint(showerror, err), "missing")
 
+    x2 = skipnan([1. 2. 3.; 4. NaN 5.])
+    @test x2[2,3] ≈ 5.
+    err = nothing
+    try
+        x2[2,2]
+    catch err
+    end
+    @test isa(err, MissingException)
+    @test contains(sprint(showerror, err), "missing")
+
+    @test sprint(Base.show, x) == "skipnan([1.0, NaN, 2.0])"
+    @test [i for i in x] ≈ [1., 2.]
+    @test eltype(x) == Float64
+    @test eltype(x32) == Float32
+    @test Base.IteratorSize(x) == Base.SizeUnknown()
+    @test Base.IndexStyle(typeof(x)) == Base.IndexLinear()
 end
