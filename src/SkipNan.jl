@@ -52,6 +52,7 @@ end
 Base.IteratorSize(::Type{<:SkipNaN}) = Base.SizeUnknown()
 Base.IteratorEltype(::Type{SkipNaN{T}}) where {T} = Base.IteratorEltype(T)
 Base.eltype(::Type{SkipNaN{T}}) where {T} = Base.eltype(T)
+Base.parent(itr::SkipNaN) = itr.x
 
 function Base.iterate(itr::SkipNaN, state...)
     y = iterate(itr.x, state...)
