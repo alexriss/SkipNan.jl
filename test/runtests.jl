@@ -52,4 +52,7 @@ using Test
     @test eltype(x32) == Float32
     @test Base.IteratorSize(x) == Base.SizeUnknown()
     @test Base.IndexStyle(typeof(x)) == Base.IndexLinear()
+
+    @test isequal(Base.parent(x), [1., NaN, 2.])
+    @test isequal(Base.parent(x32), Float32[1f0, NaN32, 2f0])
 end
